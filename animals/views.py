@@ -31,7 +31,7 @@ class AnimalViewDetail(APIView):
 
             return Response(serializer.data)
         except Animal.DoesNotExist:
-            return Response({"message": "Animal not found."})
+            return Response({"message": "Animal not found."}, status.HTTP_404_NOT_FOUND)
 
     def patch(self, request, animal_id):
         try:
@@ -50,7 +50,7 @@ class AnimalViewDetail(APIView):
 
             return Response(serializer.data)
         except Animal.DoesNotExist:
-            return Response({"message": "Animal not found."})
+            return Response({"message": "Animal not found."}, status.HTTP_404_NOT_FOUND)
 
     def delete(self, request, animal_id):
         try:
@@ -59,4 +59,4 @@ class AnimalViewDetail(APIView):
 
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Animal.DoesNotExist:
-            return Response({"message": "Animal not found."})
+            return Response({"message": "Animal not found."}, status.HTTP_404_NOT_FOUND)
